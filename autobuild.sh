@@ -15,7 +15,7 @@ AMAZON_BUCKET_S3CMD="/${BUCKET_NAME}/${BUCKET_FOLDER}/"
 
 # Sign app variables
 SIGNING_IDENTITY="" #!ДОБАВИТЬ! https://github.com/mochalovroman/autobuildadhoc/blob/master/README.md  Получение SIGNING_IDENTITY
-PROV_UUID=""#!ДОБАВИТЬ! https://github.com/mochalovroman/autobuildadhoc/blob/master/README.md. Получение PROV_UUID
+PROV_UUID="" #!ДОБАВИТЬ! https://github.com/mochalovroman/autobuildadhoc/blob/master/README.md. Получение PROV_UUID
 PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/${PROV_UUID}.mobileprovision"
 
 # Variables
