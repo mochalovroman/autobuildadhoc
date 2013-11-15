@@ -3,7 +3,13 @@ autobuildadhoc
 
 Description aboun automatization build ad-hoc app with xcode and send build on amazon s3
 
-##Настройка среды вне Xcode
+## Table of Contents
+- [Settings working environment](#settings-working-environment)
+- [Xcode settings](#xcode-settings)
+- [Settings autobuild script](#settings-autobuild-script)
+
+
+## Settings working environment
 #####terminal-notifier
 Открывает terminal.app и ставим terminal-notifier для того чтобы получать уведомления о ходе выполнения процесса
 ``` bash
@@ -71,7 +77,7 @@ Save settings? [y/N] y
 Configuration saved to '/Users/st/.s3cfg'
 ```
 
-##Настройка Xcode
+## Xcode settings
 #####Templates
 Следующие файлики скачиваем и помещаем в "Supporting Files"
 
@@ -81,7 +87,7 @@ Configuration saved to '/Users/st/.s3cfg'
 
 <img src="https://api.monosnap.com/image/download?id=Qj1KrTdiQJXIAnop7i2meNPUt" alt="Supporting Files Screenshot" />
 
-Если данные темплейты будут помещены в другую директорию,в autobuid.sh надо будет вносить изменения о которых написано в секции Настройка autobuild.sh
+Если данные темплейты будут помещены в другую директорию,в autobuid.sh надо будет вносить изменения о которых написано в секции Настройка autobuild.sh [Настройка autobuild.sh](#autobuild)
 
 #####post-action
 1. Edit Scheme
@@ -94,15 +100,42 @@ Configuration saved to '/Users/st/.s3cfg'
 ```
 <img src="https://api.monosnap.com/rpc/image/download?id=BmNLQbQaKGdVlDhcCHTHl7XN7" alt="autobuild" />
   
-##Настройка autobuild.sh
-#####Переходим на вкладку Build Settings нашего проекта. Идем до секции Code Signing. Дальше действуем пошагово
-* Получение PROV_UUID
+## Settings autobuild script
+#####Добавление необходимых параметров
+Открываем autobuild.sh прямо в xcode. Находим поиском строки содержащие 
 
-<img src="https://api.monosnap.com/image/download?id=gHOrX1Dv8bECpHBW28GBIurxE" alt="PROV_UUID" />
+```
+!ДОБАВИТЬ! 
+```
 
-* Получение SIGNING_IDENTITY
+Поиск должен найти три строки
+```
+BUCKET_FOLDER=""
+SIGNING_IDENTITY=""
+PROV_UUID=""
+```
+######BUCKET_FOLDER
+
+```
+BUCKET_FOLDER="angryiphone" 
+```
+
+Данное имя актуально для проекта angry. Для других проектов будет создаваться новая папка
+
+######SIGNING_IDENTITY
+Переходим на вкладку Build Settings нашего проекта. Идем до секции Code Signing. Дальше действуем пошагово
 
 <img src="https://api.monosnap.com/image/download?id=Och4M9ynl748whV0wIiFhWIcd" alt="SIGNING_IDENTITY" />
 
+```
+SIGNING_IDENTITY="то_что_получили_действуя_пошагово_по_картинке" 
+```
 
+###### PROV_UUID
+Переходим на вкладку Build Settings нашего проекта. Идем до секции Code Signing. Дальше действуем пошагово
 
+<img src="https://api.monosnap.com/image/download?id=gHOrX1Dv8bECpHBW28GBIurxE" alt="PROV_UUID" />
+
+```
+PROV_UUID="то_что_получили_действуя_пошагово_по_картинке" 
+```
