@@ -7,15 +7,16 @@ Description aboun automatization build ad-hoc app with xcode and send build on a
 - [Settings working environment](#settings-working-environment)
 - [Xcode settings](#xcode-settings)
 - [Settings autobuild script](#settings-autobuild-script)
+- [Total](#total)
 
 
 ## Settings working environment
-#####terminal-notifier
+###terminal-notifier
 Открывает terminal.app и ставим terminal-notifier для того чтобы получать уведомления о ходе выполнения процесса
 ``` bash
 $sudo gem install terminal-notifier
 ```
-#####s3cmd
+###s3cmd
 s3cmd это консольная утилитка для заливки файликов на амазоновские бакеты, которую мы будем ставить через macPorts. 
 * Скачиваем пакет установки для нужной OS X
 
@@ -78,7 +79,7 @@ Configuration saved to '/Users/st/.s3cfg'
 ```
 
 ## Xcode settings
-#####Templates
+###Templates
 Следующие файлики скачиваем и помещаем в "Supporting Files"
 
 * templateHTML.html
@@ -89,7 +90,7 @@ Configuration saved to '/Users/st/.s3cfg'
 
 Если данные темплейты будут помещены в другую директорию,в autobuid.sh надо будет вносить изменения о которых написано в секции Настройка autobuild.sh [Настройка autobuild.sh](#autobuild)
 
-#####post-action
+###post-action
 1. Edit Scheme
 2. Post-action. Жмем на + внизу и выбираем "New Run Script Action"
 3. Обязательно выбираем в выпадашке нужный target. Иначе это все не взлетит
@@ -101,7 +102,7 @@ Configuration saved to '/Users/st/.s3cfg'
 <img src="https://api.monosnap.com/rpc/image/download?id=BmNLQbQaKGdVlDhcCHTHl7XN7" alt="autobuild" />
   
 ## Settings autobuild script
-#####Добавление необходимых параметров
+###Добавление необходимых параметров
 Открываем autobuild.sh прямо в xcode. Находим поиском строки содержащие 
 
 ```
@@ -114,7 +115,7 @@ BUCKET_FOLDER=""
 SIGNING_IDENTITY=""
 PROV_UUID=""
 ```
-######BUCKET_FOLDER
+####BUCKET_FOLDER
 
 ```
 BUCKET_FOLDER="angryiphone" 
@@ -122,7 +123,7 @@ BUCKET_FOLDER="angryiphone"
 
 Данное имя актуально для проекта angry. Для других проектов будет создаваться новая папка
 
-######SIGNING_IDENTITY
+####SIGNING_IDENTITY
 Переходим на вкладку Build Settings нашего проекта. Идем до секции Code Signing. Дальше действуем пошагово
 
 <img src="https://api.monosnap.com/image/download?id=Och4M9ynl748whV0wIiFhWIcd" alt="SIGNING_IDENTITY" />
@@ -131,7 +132,7 @@ BUCKET_FOLDER="angryiphone"
 SIGNING_IDENTITY="то_что_получили_действуя_пошагово_по_картинке" 
 ```
 
-###### PROV_UUID
+#### PROV_UUID
 Переходим на вкладку Build Settings нашего проекта. Идем до секции Code Signing. Дальше действуем пошагово
 
 <img src="https://api.monosnap.com/image/download?id=gHOrX1Dv8bECpHBW28GBIurxE" alt="PROV_UUID" />
@@ -139,3 +140,6 @@ SIGNING_IDENTITY="то_что_получили_действуя_пошагово
 ```
 PROV_UUID="то_что_получили_действуя_пошагово_по_картинке" 
 ```
+
+## Total
+Вот вообщем-то и все. Делаем Product-->Archive. И если все было сделано правильно то Ваш билд зальется на S3 и ссылка на него будет скопирована в буфер обмена и также открыта в сафари. Enjoy!
