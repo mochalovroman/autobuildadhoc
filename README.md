@@ -1,7 +1,7 @@
 autobuildadhoc
 ==============
 
-Description aboun automatization build ad-hoc app with xcode and send build on amazon s3
+Description about automatization build ad-hoc app with xcode and send build on amazon s3
 
 ## Table of Contents
 - [Settings working environment](#settings-working-environment)
