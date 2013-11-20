@@ -27,9 +27,9 @@ PLIST_PATH="${SRCROOT}/${INFOPLIST_FILE}"
 DATE_WITH_HOURS=$(/bin/date +"%d.%m.%Y_%H.%M" )
 BUILD_NUMBER=$(defaults read "${PLIST_PATH}" CFBundleVersion)
 
-IPA_FINAL_NAME=${PRODUCT_NAME}-${DATE_WITH_HOURS}-$USER.ipa
-PLIST_FINAL_NAME=${PRODUCT_NAME}-${DATE_WITH_HOURS}-$USER.plist
-HTML_FINAL_NAME="Install${PRODUCT_NAME}".html
+IPA_FINAL_NAME=${TARGET_NAME}-${DATE_WITH_HOURS}-$USER.ipa
+PLIST_FINAL_NAME=${TARGET_NAME}-${DATE_WITH_HOURS}-$USER.plist
+HTML_FINAL_NAME="Install${TARGET_NAME}".html
 
 # Growl init
 GROWL="/usr/bin/terminal-notifier -title Xcode -message"
