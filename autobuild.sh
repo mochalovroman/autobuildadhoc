@@ -43,12 +43,12 @@ ${GROWL} "Creating IPA"
 # Create plist
 echo "Creating PLIST ${PLIST_FINAL_NAME}" >> $LOG
 ${GROWL} "Creating PLIST"
-cat "${SRCROOT}/${PRODUCT_NAME}/templatePLIST.plist" | sed -e "s/\${PRODUCT_NAME}/$PRODUCT_NAME/" -e "s/\${BUILD_NUMBER}/$BUILD_NUMBER/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" -e "s/\${IPA_FINAL_NAME}/$IPA_FINAL_NAME/" > /tmp/${PLIST_FINAL_NAME}
+cat "${SRCROOT}/${TARGET_NAME}/templatePLIST.plist" | sed -e "s/\${PRODUCT_NAME}/$PRODUCT_NAME/" -e "s/\${BUILD_NUMBER}/$BUILD_NUMBER/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" -e "s/\${IPA_FINAL_NAME}/$IPA_FINAL_NAME/" > /tmp/${PLIST_FINAL_NAME}
 
 # Create html
 echo "Creating HTML ${HTML_FINAL_NAME}" >> $LOG
 ${GROWL} "Creating HTML"
-cat "${SRCROOT}/${PRODUCT_NAME}/templateHTML.html"  | sed -e "s/\${PRODUCT_NAME}/$PRODUCT_NAME/" -e "s/\${PLIST_FINAL_NAME}/$PLIST_FINAL_NAME/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" > /tmp/${HTML_FINAL_NAME}
+cat "${SRCROOT}/${TARGET_NAME}/templateHTML.html"  | sed -e "s/\${PRODUCT_NAME}/$PRODUCT_NAME/" -e "s/\${PLIST_FINAL_NAME}/$PLIST_FINAL_NAME/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" > /tmp/${HTML_FINAL_NAME}
 
 # Upload amazon s3
 echo "Uploading to S3..." >> $LOG
