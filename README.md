@@ -97,7 +97,7 @@ Configuration saved to '/Users/st/.s3cfg'
 4. Добавляем в поле ввода следующий код
 
 ```bash
-/bin/sh ${SRCROOT}/${PRODUCT_NAME}/autobuild.sh
+/bin/sh ${SRCROOT}/${TARGET_NAME}/autobuild.sh
 ```
 <img src="https://api.monosnap.com/rpc/image/download?id=BmNLQbQaKGdVlDhcCHTHl7XN7" alt="autobuild" />
   
