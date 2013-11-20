@@ -23,9 +23,10 @@ DATE_ARCHIVE=$(/bin/date +"%Y-%m-%d")
 ARCHIVE=$(/bin/ls -t "${HOME}/Library/Developer/Xcode/Archives/${DATE_ARCHIVE}" | /usr/bin/grep xcarchive | /usr/bin/sed -n 1p )
 DSYM="${HOME}/Library/Developer/Xcode/Archives/${DATE_ARCHIVE}/${ARCHIVE}/dSYMs/${PRODUCT_NAME}.app.dSYM"
 APP="${HOME}/Library/Developer/Xcode/Archives/${DATE_ARCHIVE}/${ARCHIVE}/Products/Applications/${PRODUCT_NAME}.app"
-PLIST_PATH="${SRCROOT}/${INFOPLIST_FILE}"
+PLIST_PATH="${APP}/Info.plist"
 DATE_WITH_HOURS=$(/bin/date +"%d.%m.%Y_%H.%M" )
 BUILD_NUMBER=$(defaults read "${PLIST_PATH}" CFBundleVersion)
+BUNDLE_NAME=$(defaults read "${PLIST_PATH}" CFBundleIdentifier)
 
 IPA_FINAL_NAME=${TARGET_NAME}-${DATE_WITH_HOURS}-$USER.ipa
 PLIST_FINAL_NAME=${TARGET_NAME}-${DATE_WITH_HOURS}-$USER.plist
@@ -43,7 +44,7 @@ ${GROWL} "Creating IPA"
 # Create plist
 echo "Creating PLIST ${PLIST_FINAL_NAME}" >> $LOG
 ${GROWL} "Creating PLIST"
-cat "${SRCROOT}/${TARGET_NAME}/templatePLIST.plist" | sed -e "s/\${PRODUCT_NAME}/$PRODUCT_NAME/" -e "s/\${BUILD_NUMBER}/$BUILD_NUMBER/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" -e "s/\${IPA_FINAL_NAME}/$IPA_FINAL_NAME/" > /tmp/${PLIST_FINAL_NAME}
+cat "${SRCROOT}/${TARGET_NAME}/templatePLIST.plist" | sed -e "s/\${BUNDLE_NAME}/$BUNDLE_NAME/" -e "s/\${BUILD_NUMBER}/$BUILD_NUMBER/" -e "s/\${AMAZON_BUCKET}/$AMAZON_BUCKET/" -e "s/\${AMAZON_DOMAIN}/$AMAZON_DOMAIN/" -e "s/\${IPA_FINAL_NAME}/$IPA_FINAL_NAME/" > /tmp/${PLIST_FINAL_NAME}
 
 # Create html
 echo "Creating HTML ${HTML_FINAL_NAME}" >> $LOG
